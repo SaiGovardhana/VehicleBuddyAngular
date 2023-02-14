@@ -25,9 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css","src/assets/bootstrap.css","src/assets/aos.css","src/assets/faicon.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/bootstrap.bundle.js","src/assets/aos.js","src/assets/faicon.js","src/assets/myinit.js"]
           },
           "configurations": {
             "production": {
@@ -94,5 +94,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1b11603a-e130-497e-8e69-5cbb9951cadf"
   }
 }

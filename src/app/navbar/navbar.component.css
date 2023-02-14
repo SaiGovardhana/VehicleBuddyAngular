@@ -1,0 +1,33 @@
+a{
+    font-weight: bold;
+}
+.mynav{
+    border: none;
+}
+
+.dropdown-item:hover
+{
+    background-color: #dc3545;
+    color: white;
+}
+@media (min-width: 992px) {
+    #dropdownitems
+    {
+        transform: translateX(-70px);
+    }
+    .mynav:hover
+    { color: 	#dc3545    !important;
+  
+      background-color: white;
+    
+    }
+  
+    .mynav
+    { color: white!important;
+      transition: .2s;
+      background-color: 	#dc3545;
+      border: white thin solid;
+    }
+
+  }
+
