@@ -1,5 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { userModel } from '../models/models';
+import { AuthStore } from '../services/auth.service';
 import { NavBarService } from './navbar.service';
 
 @Component({
@@ -14,18 +17,26 @@ import { NavBarService } from './navbar.service';
       transition("* => hide",[animate('1s cubic-bezier(0,1.06,.82,1.01)')]),
     ])
   ]})
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   @Input("appname")
     appname!:string
-  user={name:"Govardhan",role:"default"}
+
+  curUser$!:Observable<userModel>;
+  
   navImage="/assets/car.png";
   
-  mynavService:NavBarService
-  constructor(private navService:NavBarService)
+  mynavService!:NavBarService
+  
+  constructor(private navService:NavBarService,private authStore:AuthStore)
   {
-    this.mynavService=navService;
+    
   } 
+  ngOnInit(): void {
+    this.mynavService=this.navService;
+    this.curUser$=this.authStore.currentUser$
+  }
 
+  
 
 
   

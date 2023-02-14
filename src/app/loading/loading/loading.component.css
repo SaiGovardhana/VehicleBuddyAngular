@@ -1,0 +1,9 @@
+.full-page-loading
+{
+    position:fixed;
+    top: 0;
+    background-color: wheat;
+    z-index: 1000;
+    width: 100vw;
+    height:100vh
+}

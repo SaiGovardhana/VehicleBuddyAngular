@@ -1,0 +1,1 @@
+export type userModel={username:string,email:string,role:string};

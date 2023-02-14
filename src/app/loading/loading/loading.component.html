@@ -1,0 +1,18 @@
+<div [@showAndHide]="(loadingVisible$ | async)?'show':'hide'" class="full-page-loading d-flex flex-column justify-content-center align-items-stretch bg-white">
+    <h1 class="h1 text-center text-danger" style="font-size: 4rem;">Vehicle Buddy</h1>
+    <div class=" d-flex justify-content-center">
+        <div class="spinner-grow text-danger me-2" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger me-2" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger me-2" role="status">
+            <span class="sr-only">Loading..</span>
+          </div>
+          
+    </div>
+    <div class="h2 mt-4  text-danger text-center">
+        Loading
+    </div>
+</div>

@@ -29,9 +29,9 @@
                     
   
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <i  class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input type="userpassword" id="userpassword" placeholder="Your Password" class="form-control" />
+                        <input type="userpassword" type="password" id="userpassword" placeholder="Your Password" class="form-control" />
                         <label class="form-label" for="userpassword">Your Password</label>
                       </div>
                     </div>
@@ -39,11 +39,23 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input type="userretypepassword" id="userretypepassword" placeholder="Retype Password" class="form-control" />
+                        <input type="userretypepassword" id="userretypepassword" type="password" placeholder="Retype Password" class="form-control" />
                         <label class="form-label" for="userretypepassword">Retype Password</label>
                       </div>
                     </div>
-  
+                    <h4 class="text-center">Select Your Role</h4>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        
+                        <select class="form-control form-select-lg mb-3" name="userrole" aria-label=".form-select-lg example">
+                          <option value="customer">Customer</option>
+                          <option value="seller">Seller</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+
 
 
                     <p class="text-center text-danger"> Already have an account? <a routerLink="/signin"> Sign In </a> </p>
