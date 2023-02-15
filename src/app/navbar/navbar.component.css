@@ -10,6 +10,11 @@ a{
     background-color: #dc3545;
     color: white;
 }
+
+*{
+  z-index: 10;
+}
+
 @media (min-width: 992px) {
     #dropdownitems
     {

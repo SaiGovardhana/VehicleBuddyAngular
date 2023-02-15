@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoadingService } from './loading.service';
 
@@ -36,7 +36,10 @@ export class LoadingComponent implements OnInit {
           setTimeout(()=>this.loadingservice.hideLoading(),1)
           
         }
-
+      if(e instanceof NavigationCancel)
+      {
+        console.log("No perm")
+      }
     });
   }
   
