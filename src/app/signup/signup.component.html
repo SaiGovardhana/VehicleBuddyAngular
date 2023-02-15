@@ -1,4 +1,4 @@
-<section  >
+<section>
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
@@ -8,21 +8,22 @@
                 <div class=" col-lg-8 col-md-10">
   
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-  
-                  <form class="mx-1 mx-md-4">
+                  
+                  <form (ngSubmit)="submitForm()" [formGroup]="signUpForm" class="mx-1 mx-md-4">
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input name="username" type="text" id="username" placeholder="Your Name" class="form-control" />
+                        <input   formControlName="username"  name="username"  type="text" id="username" placeholder="Your Name" class="form-control" />
                         <label class="form-label" for="username">Your Name</label>
                       </div>
+                        
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input type="useremail" id="useremail" placeholder="Your Email" class="form-control" />
+                        <input  formControlName="useremail"  type="text" id="useremail"  placeholder="Your Email" class="form-control" />
                         <label class="form-label" for="useremail">Your Email</label>
                       </div>
                     </div>
@@ -31,7 +32,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i  class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input type="userpassword" type="password" id="userpassword" placeholder="Your Password" class="form-control" />
+                        <input formControlName="userpassword" type="userpassword" name="userpassword" type="password" id="userpassword" placeholder="Your Password" class="form-control" />
                         <label class="form-label" for="userpassword">Your Password</label>
                       </div>
                     </div>
@@ -39,16 +40,16 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input type="userretypepassword" id="userretypepassword" type="password" placeholder="Retype Password" class="form-control" />
+                        <input  formControlName="userretypepassword" type="userretypepassword" id="userretypepassword"  type="password" placeholder="Retype Password" class="form-control" />
                         <label class="form-label" for="userretypepassword">Retype Password</label>
                       </div>
                     </div>
                     <h4 class="text-center">Select Your Role</h4>
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <i class="fas fa-masks-theater fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         
-                        <select class="form-control form-select-lg mb-3" name="userrole" aria-label=".form-select-lg example">
+                        <select formControlName="userrole"  class="form-control form-select-lg mb-3" name="userrole" aria-label=".form-select-lg example">
                           <option value="customer">Customer</option>
                           <option value="seller">Seller</option>
                         </select>
@@ -60,7 +61,7 @@
 
                     <p class="text-center text-danger"> Already have an account? <a routerLink="/signin"> Sign In </a> </p>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-outline-danger btn-lg">Sign Up</button>
+                      <input type="submit" class="btn btn-outline-danger btn-lg" name="Sign Up">
                     </div>
   
                   </form>

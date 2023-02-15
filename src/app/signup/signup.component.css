@@ -4,4 +4,12 @@
     
 }
 
+input.ng-valid  {
+    border-bottom: 5px solid #42A948; /* green */
+  }
+
+  
+  .ng-invalid:not(form)  {
+    border-bottom: 5px solid #a94442; /* red */
+  }
 

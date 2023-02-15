@@ -25,7 +25,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css","src/assets/bootstrap.css","src/assets/aos.css","src/assets/faicon.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "src/assets/bootstrap.css",
+              "src/assets/aos.css",
+              "src/assets/faicon.css"
             ],
             "scripts": ["src/assets/bootstrap.bundle.js","src/assets/aos.js","src/assets/faicon.js","src/assets/myinit.js"]
           },

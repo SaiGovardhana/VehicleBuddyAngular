@@ -9,7 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
-  {path:"home",component:HomeComponent,pathMatch:"full"},
+  {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
   {path:"signup",component:SignupComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"signin",component:SigninComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"dashboard",component:DashboardComponent,canActivate:[CustomerActivateGuard]}

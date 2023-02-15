@@ -9,6 +9,9 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { LoadingComponent } from './loading/loading/loading.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal/modal.component';
+import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SignupComponent,
     SigninComponent,
     LoadingComponent,
-    DashboardComponent
+    DashboardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,BrowserAnimationsModule
+    AppRoutingModule,BrowserAnimationsModule,ReactiveFormsModule, NgbModule
   ],
-  providers: [],
+  providers: [NgbModal,NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

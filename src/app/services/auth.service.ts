@@ -13,7 +13,7 @@ export class AuthStore
     currentUser$:Observable<userModel>;
     constructor()
     {
-        this.subject$=new BehaviorSubject({username:"Govardhana",email:"govardhan@gmail.com",role:"customer"});
+        this.subject$=new BehaviorSubject({username:"Govardhana",email:"govardhan@gmail.com",role:"default"});
         this.currentUser$=this.subject$.asObservable().pipe();
     }
 
