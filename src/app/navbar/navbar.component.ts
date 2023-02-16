@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { userModel } from '../models/models';
 import { AuthStore } from '../services/auth.service';
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
   
   mynavService!:NavBarService
   
-  constructor(private navService:NavBarService,private authStore:AuthStore)
+  constructor(private navService:NavBarService,private authStore:AuthStore,private router:Router)
   {
     
   } 
@@ -38,7 +39,11 @@ export class NavbarComponent implements OnInit {
 
   
 
-
+  signOut()
+  {
+    this.authStore.signOut();
+    this.router.navigateByUrl("/home")
+  }
   
 
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './homecomponent/home.component';
 import { CustomerActivateGuard } from './RouterActivationGuards/CustomerActivateGuard';
+import { LoggedInActivateGuard } from './RouterActivationGuards/LoggedInActivationGuard';
 import { LoggedOutActivateGuard } from './RouterActivationGuards/LoggedOutActivationRoute';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -12,7 +13,7 @@ const basicRoutes:Routes=[
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
   {path:"signup",component:SignupComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"signin",component:SigninComponent,canActivate:[LoggedOutActivateGuard]},
-  {path:"dashboard",component:DashboardComponent,canActivate:[CustomerActivateGuard]}
+  {path:"dashboard",component:DashboardComponent,canActivate:[LoggedInActivateGuard]}
 ]
 
 

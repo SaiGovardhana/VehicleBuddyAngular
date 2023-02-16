@@ -12,9 +12,31 @@ export class AuthStore
 {   private subject$:BehaviorSubject<userModel>;
     currentUser$:Observable<userModel>;
     constructor()
-    {
-        this.subject$=new BehaviorSubject({username:"Govardhana",email:"govardhan@gmail.com",role:"default"});
+    {   let defaultRole:userModel={username:"",email:"",role:"default"};
+        this.subject$=new BehaviorSubject(defaultRole);
+        if(localStorage.getItem("userDetails")!=undefined&&localStorage.getItem("userDetails")!=null)
+            {
+                this.subject$.next(JSON.parse(localStorage.getItem("userDetails") as string) as userModel);
+            }
         this.currentUser$=this.subject$.asObservable().pipe();
+    }
+    
+
+    updateUser(data:userModel)
+    {
+        console.log("Updating User");
+        this.subject$.next(data);
+        localStorage.setItem("userDetails",JSON.stringify(data));
+
+    }
+
+    signOut()
+    {   console.log("Signing Out");
+        let defaultRole:userModel={username:"",email:"",role:"default"};
+        localStorage.removeItem("userDetails");
+        this.subject$.next(defaultRole);
+
+
     }
 
 }

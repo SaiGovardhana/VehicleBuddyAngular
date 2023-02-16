@@ -14,7 +14,8 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input   formControlName="username"  name="username"  type="text" id="username" placeholder="Your Name" class="form-control" />
+                        <input  placement="end top" [ngbPopover]="signUpForm.get('username')?.valid ?'':'User name must be 4 characters'" 
+                           formControlName="username"  name="username"  type="text" id="username" placeholder="Your Name" class="form-control" />
                         <label class="form-label" for="username">Your Name</label>
                       </div>
                         
@@ -23,8 +24,10 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input  formControlName="useremail"  type="text" id="useremail"  placeholder="Your Email" class="form-control" />
-                        <label class="form-label" for="useremail">Your Email</label>
+                        <input  placement="end top"  [ngbPopover]="signUpForm.get('useremail')?.valid ?'':'Enter A Valid Email'"
+                           formControlName="useremail"  type="text" id="useremail"  placeholder="Your Email" class="form-control" />
+                        
+                           <label class="form-label" for="useremail">Your Email</label>
                       </div>
                     </div>
                     
@@ -32,7 +35,8 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i  class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input formControlName="userpassword" type="userpassword" name="userpassword" type="password" id="userpassword" placeholder="Your Password" class="form-control" />
+                        <input placement="end top"  [ngbPopover]="signUpForm.get('userpassword')?.valid ?'':'Password must contain 3 characters'"
+                        formControlName="userpassword" type="userpassword" name="userpassword" type="password" id="userpassword" placeholder="Your Password" class="form-control" />
                         <label class="form-label" for="userpassword">Your Password</label>
                       </div>
                     </div>
@@ -40,7 +44,8 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input  formControlName="userretypepassword" type="userretypepassword" id="userretypepassword"  type="password" placeholder="Retype Password" class="form-control" />
+                        <input   placement="end top" [ngbPopover]="signUpForm.get('userretypepassword')?.valid ?'':'Passwords dont match'"
+                        formControlName="userretypepassword" type="userretypepassword" id="userretypepassword"  type="password" placeholder="Retype Password" class="form-control" />
                         <label class="form-label" for="userretypepassword">Retype Password</label>
                       </div>
                     </div>
@@ -63,7 +68,7 @@
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <input type="submit" class="btn btn-outline-danger btn-lg" name="Sign Up">
                     </div>
-  
+                  
                   </form>
   
                 </div>

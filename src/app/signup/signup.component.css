@@ -13,3 +13,8 @@ input.ng-valid  {
     border-bottom: 5px solid #a94442; /* red */
   }
 
+.mypopoverclass
+{
+  background-color: red !important;
+  color: white;
+}

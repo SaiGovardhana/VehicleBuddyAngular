@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal/modal.component';
 import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {HttpClient, HttpClientModule} from "@angular/common/http"
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,BrowserAnimationsModule,ReactiveFormsModule, NgbModule
+    AppRoutingModule,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,HttpClientModule
   ],
   providers: [NgbModal,NgbActiveModal],
   bootstrap: [AppComponent]
