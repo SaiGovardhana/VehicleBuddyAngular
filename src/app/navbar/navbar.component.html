@@ -1,4 +1,4 @@
-<nav *ngIf="(curUser$|async) as user"  [@showAndHide]="(mynavService.navBarVisible$|async)?'show':'hide'" style="transform: translateY(-100px);"  class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav *ngIf="(curUser$|async) as user"  [@showAndHide]="(mynavService.navBarVisible$| async )?'show':'hide'" style="transform: translateY(-100px);"  class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container-fluid">
       <!-- Place website nav image -->
       <img [src]="navImage" width="40" height="40" class="mx-2 d-inline-block align-top" alt="">
@@ -41,7 +41,7 @@
 
           <li *ngIf="user.role!='default'" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{user.username}}
+              {{user.name}}
             </a>
 
             <ul    class="dropdown-menu"  id="dropdownitems"  data-bs-display="static" aria-labelledby="navbarDropdown">

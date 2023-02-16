@@ -1,16 +1,16 @@
-import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AppModalService } from '../modal/modal.service';
-import { BasicObject, ModalDataObject } from '../models/models';
-import { UserEndpoint } from '../services/UserEndpoint.service';
+import { Subscription } from 'rxjs';
+import { BasicObject } from '../models/models';
+import { AuthStore } from '../services/auth.service';
+import { SignupmodalComponent } from './signupmodal/signupmodal.component';
 
 //Validate if both passwords match
 const PasswordMatchValidator:ValidatorFn=(control)=>
 { 
 
-  const userpassword=control.parent?.get("userpassword")
+  const userpassword=control.parent?.get("password")
   const repassword= control;
   return userpassword?.value != repassword?.value ? {"error":true} : null; 
 
@@ -23,59 +23,60 @@ const PasswordMatchValidator:ValidatorFn=(control)=>
   
 })
 export class SignupComponent implements OnDestroy
-{ roles=["customer","seller"]
+{
+  @ViewChild(SignupmodalComponent)
+    modalComponent!:SignupmodalComponent
+
   signUpForm = new FormGroup({
-  username: new FormControl("",[Validators.required,Validators.minLength(4)]),
-  userpassword: new FormControl("",[Validators.required,Validators.minLength(3)]),
-  useremail: new FormControl("",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-  userretypepassword: new FormControl("",[Validators.required,PasswordMatchValidator,Validators.minLength(3)]),
-  userrole:new FormControl(this.roles[0])
-  }
-);
+  name: new FormControl("",[Validators.required,Validators.minLength(4)]),
+  password: new FormControl("",[Validators.required,Validators.minLength(3)]),
+  email: new FormControl("",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+  retypepassword: new FormControl("",[Validators.required,PasswordMatchValidator,Validators.minLength(3)]),
+  role:new FormControl("customer")
+  });
+
   httpSubscriber$!:Subscription;
-  constructor(private modalService:AppModalService,private userService:UserEndpoint,private router:Router)
+  constructor(private authStore:AuthStore,private router:Router)
   {
     
   }
   
   ngOnDestroy(): void {
-    if(this.httpSubscriber$!=undefined&&this.httpSubscriber$!=null)
+    if(this.httpSubscriber$!=null)
     {
       console.log("Unsubscibing from http")
+      this.httpSubscriber$.unsubscribe();
     }
   }
 
   submitForm()
   {
+    let data:BasicObject={};
+    for(let x in this.signUpForm.controls)
+      data[x]=this.signUpForm.get(x)?.value;
+    console.log(data)
     if(this.signUpForm.valid)
     {
-    let data={"name":this.signUpForm.get("username")?.value as string,"role":this.signUpForm.get("userrole")?.value as string,
-    "password":this.signUpForm.get("userpassword")?.value as string,"email":this.signUpForm.get("useremail")?.value as string};
       
-    this.modalService.showModal({state:"loading"});
-    this.httpSubscriber$= this.userService.addUser(data).subscribe((res)=>
-    { let modalObject:ModalDataObject={}
+    this.modalComponent.open('loading');
+    this.httpSubscriber$= this.authStore.addUser(data).subscribe((res)=>
+    { 
       if(res["success"])
-      { 
-        modalObject["showButton"]=false;
-        modalObject["state"]="success";
-        modalObject["title"]="Signed Up!";
-        setTimeout(()=>this.router.navigateByUrl('/dashboard'),3000);
+      {   this.modalComponent.name=this.signUpForm.get("name")?.value as string;
+          this.modalComponent.state="success";
+          setTimeout(()=>this.router.navigateByUrl("/dashboard"),1500);
       }
       else
       {
-        modalObject["showButton"]=true;
-        modalObject["state"]="failure";
-        modalObject["title"]=res["message"];
-
+        this.modalComponent.state="failure";
       }
-      this.modalService.showModal(modalObject);
+    
       
     });
     }
     else
     {
-      this.modalService.showModal({state:"failure","title":"Enter valid Fields",showButton:true,buttonText:"Close"});
+        this.modalComponent.open("invalid");
     }
 
   }

@@ -10,9 +10,11 @@ import { SigninComponent } from './signin/signin.component';
 import { LoadingComponent } from './loading/loading/loading.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalComponent } from './modal/modal/modal.component';
+
 import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {HttpClient, HttpClientModule} from "@angular/common/http"
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { SignupmodalComponent } from './signup/signupmodal/signupmodal.component';
+import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http"
     SigninComponent,
     LoadingComponent,
     DashboardComponent,
-    ModalComponent
+    SignupmodalComponent,
+    SigninmodalComponent,
+
   ],
   imports: [
     BrowserModule,

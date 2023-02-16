@@ -1,3 +1,4 @@
+<app-signinmodal></app-signinmodal>
 <section>
     <div class="container " >
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -9,15 +10,15 @@
   
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
   
-                  <form [formGroup]="signInForm" class="mx-1 mx-md-4">
+                  <form (ngSubmit)="submitForm()" [formGroup]="signInForm" class="mx-1 mx-md-4">
   
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input formControlName="useremail" placement="end top"  [ngbPopover]="signInForm.get('useremail')?.valid ?'':'Enter A Valid Email'"
-                        type="useremail" id="useremail" placeholder="Your Email" class="form-control" />
-                        <label class="form-label" for="useremail">Your Email</label>
+                        <input formControlName="email" placement="end top"  [ngbPopover]="signInForm.get('email')?.valid ?'':'Enter A Valid Email'"
+                        type="email" id="email" placeholder="Your Email" class="form-control" />
+                        <label class="form-label" for="email">Your Email</label>
                       </div>
                     </div>
                     
@@ -25,16 +26,16 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
-                        <input formControlName="userpassword"  placement="end top"  [ngbPopover]="signInForm.get('userpassword')?.valid ?'':'Password must contain 3 characters'"
-                        type="userpassword" id="userpassword" type="password" placeholder="Your Password" class="form-control" />
-                        <label class="form-label" for="userpassword">Your Password</label>
+                        <input formControlName="password"  placement="end top"  [ngbPopover]="signInForm.get('password')?.valid ?'':'Password must contain 3 characters'"
+                        type="password" id="password" type="password" placeholder="Your Password" class="form-control" />
+                        <label class="form-label" for="password">Your Password</label>
                       </div>
                     </div>
 
                     <p class="text-center text-danger"> Dont have an account? <a routerLink="/signup"> Sign Up </a> </p>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="button" class="btn btn-outline-danger btn-lg">Sign In</button>
+                      <input type="submit" class="btn btn-outline-danger btn-lg" name="Sign In">
                     </div>
                     
                   </form>
