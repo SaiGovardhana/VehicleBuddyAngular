@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CatalogComponent } from './catalog/catalog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './homecomponent/home.component';
 import { CustomerActivateGuard } from './RouterActivationGuards/CustomerActivateGuard';
@@ -13,7 +14,8 @@ const basicRoutes:Routes=[
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
   {path:"signup",component:SignupComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"signin",component:SigninComponent,canActivate:[LoggedOutActivateGuard]},
-  {path:"dashboard",component:DashboardComponent,canActivate:[LoggedInActivateGuard]}
+  {path:"dashboard",component:DashboardComponent,canActivate:[LoggedInActivateGuard]},
+  {path:"user/catalog",component:CatalogComponent,canActivate:[CustomerActivateGuard]}
 ]
 
 

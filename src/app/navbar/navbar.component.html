@@ -27,16 +27,16 @@
               </li>
                 <ng-container *ngIf="user.role=='customer'">
                       <li class="nav-item">
-                         <a class="nav-link"  href="#">Book Now</a>
+                         <a class="nav-link"  >Book Now</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link"  href="#">My Bookings</a>
+                        <a class="nav-link" >My Bookings</a>
                       </li>
                 </ng-container>
           </ng-container>
           
           <li class="nav-item">
-            <a class="nav-link" *ngIf="user.role=='seller'" href="#">My Vehicles</a>
+            <a class="nav-link" *ngIf="user.role=='seller'" >My Vehicles</a>
           </li>
 
           <li *ngIf="user.role!='default'" class="nav-item dropdown">
@@ -46,8 +46,8 @@
 
             <ul    class="dropdown-menu"  id="dropdownitems"  data-bs-display="static" aria-labelledby="navbarDropdown">
               <li  ><a class="dropdown-item"   href="#">Profile</a></li>
-              <li *ngIf="user.role=='customer'"><a class="dropdown-item" href="#">My Bookings</a></li>
-              <li *ngIf="user.role=='seller'"><a class="dropdown-item" href="#">My Vehicles</a></li>
+              <li *ngIf="user.role=='customer'"><a class="dropdown-item"  >My Bookings</a></li>
+              <li *ngIf="user.role=='seller'"><a class="dropdown-item" >My Vehicles</a></li>
               <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
             </ul>
 

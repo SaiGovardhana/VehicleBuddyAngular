@@ -3,8 +3,9 @@
        <p> Hey <i  class="text-danger">{{(currentUser$| async)!.name}}</i>, Heres your dashboard
        </p>
     </div>
-    <div class="row justify-content-center">
-        <div *ngFor="let card of cards" class="card m-3 mx-2 border-danger  col-md-4 col-10" >
+    <div class="row justify-content-center" *ngIf="((currentUser$)| async )as user">
+       
+        <div  *ngFor="let card of cards[user.role=='customer'?user.role:'seller'] " class="card m-3 mx-2 border-danger  col-md-4 col-10" >
             <div class="row g-0 text-danger">
               <div class="col-md-4 d-flex justify-content-center">
                 <i [class]="card.icon" class="fa fa-5x align-self-center  mt-2" aria-hidden="true"></i>

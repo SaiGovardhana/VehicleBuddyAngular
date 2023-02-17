@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { userModel } from '../models/models';
 import { AuthStore } from '../services/auth.service';
+import { cards } from './dashboard.data';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,21 +10,10 @@ import { AuthStore } from '../services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  cards=[{
-    title:"My Bookings",
-    description:"See your previous and current bookings that you made",
-    icon:"fa-car",
-    link:"/user/bookings"
-  },
-  {
-    title:"Profile",
-    description:"Make changes to your profile. Upload pic,name .etc ",
-    icon:"fa-person",
-    link:"/user/profile"
-
-  }];
+ 
 
   currentUser$!:Observable<userModel>;
+  cards=cards
   constructor(private userAuth:AuthStore)
   {
 

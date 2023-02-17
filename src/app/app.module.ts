@@ -14,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { SignupmodalComponent } from './signup/signupmodal/signupmodal.component';
-import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component'
+import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component';
+import { CatalogComponent } from './catalog/catalog.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component
     DashboardComponent,
     SignupmodalComponent,
     SigninmodalComponent,
+    CatalogComponent,
 
   ],
   imports: [
