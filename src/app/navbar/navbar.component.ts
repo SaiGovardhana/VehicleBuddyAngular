@@ -2,9 +2,14 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { userModel } from '../models/models';
+import { BasicObject, userModel } from '../models/models';
 import { AuthStore } from '../services/auth.service';
 import { NavBarService } from './navbar.service';
+
+const customerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/user/catalog",text:"Book Now"},{path:"/mybookings",text:"My Bookings"}];
+const sellerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/seller/myvehicles",text:"My Vehicles"}];
+const navs:BasicObject={customer:customerNavs,seller:sellerNavs,default:null}
+
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +26,7 @@ import { NavBarService } from './navbar.service';
 export class NavbarComponent implements OnInit {
   @Input("appname")
     appname!:string
-
+  navs=navs
   curUser$!:Observable<userModel>;
   
   navImage="/assets/car.png";

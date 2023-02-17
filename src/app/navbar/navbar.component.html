@@ -10,48 +10,42 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        
         <ul class=" navbar-nav mb-2 mb-lg-0 ms-auto">
-          
-          <ng-template #userNavs>
+          <ng-template #defaultUser>
             <li class="nav-item mynav me-2">
-              <a class="nav-link mynav " aria-current="page" routerLink="/signin" >Sign In</a>
-            </li>
-            <li class="nav-item mynav me-2">
-              <a class="nav-link mynav" routerLink="/signup" >Sign Up</a>
-            </li>
-          </ng-template>
-          
-          <ng-container *ngIf="user.role!='default' ; else userNavs">
-              <li class="nav-item">
-                <a class="nav-link"  aria-current="page" href="#">Home</a>
+                <a class="nav-link mynav " aria-current="page" routerLink="/signin" >Sign In</a>
               </li>
-                <ng-container *ngIf="user.role=='customer'">
-                      <li class="nav-item">
-                         <a class="nav-link"  >Book Now</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" >My Bookings</a>
-                      </li>
-                </ng-container>
-          </ng-container>
+              <li class="nav-item mynav me-2">
+                <a class="nav-link mynav" routerLink="/signup" >Sign Up</a>
+              </li>
+        </ng-template>
+        
+        <ng-container *ngIf="(user.role && user.role!='default'); else defaultUser">
+           
+                <li *ngFor=" let nav of navs[user.role]" class="nav-item"><a class="nav-link"  [routerLink]="nav.path" > {{nav.text}}</a></li>
           
-          <li class="nav-item">
-            <a class="nav-link" *ngIf="user.role=='seller'" >My Vehicles</a>
-          </li>
-
-          <li *ngIf="user.role!='default'" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{user.name}}
-            </a>
-
-            <ul    class="dropdown-menu"  id="dropdownitems"  data-bs-display="static" aria-labelledby="navbarDropdown">
-              <li  ><a class="dropdown-item"   href="#">Profile</a></li>
-              <li *ngIf="user.role=='customer'"><a class="dropdown-item"  >My Bookings</a></li>
-              <li *ngIf="user.role=='seller'"><a class="dropdown-item" >My Vehicles</a></li>
-              <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
-            </ul>
-
-          </li>
+            <ng-container>
+                <li  class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{user.name}}
+                    </a>
+        
+                    <ul    class="dropdown-menu"  id="dropdownitems"  data-bs-display="static" aria-labelledby="navbarDropdown">
+                        <li *ngFor=" let nav of navs[user.role]" ><a class="dropdown-item "  [routerLink]="nav.path" > {{nav.text}}</a></li>
+                        
+                      <li><a (click)="signOut()" class="dropdown-item" >Sign Out</a></li>
+                    </ul>
+        
+                  </li>
+            </ng-container>
+            
+        </ng-container>
+      
+          
+         
+      
 
         </ul>
 
