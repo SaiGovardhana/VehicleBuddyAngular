@@ -1,4 +1,13 @@
-<div class="container-fluid">
+<ng-template #error>
+    <div style="height:80vh" class=" d-flex flex-column justify-content-center my-auto">
+        <i class='text-danger mt-5 col-12 fa-solid fa-5x  fa-car-crash'></i>
+        <h1 class="h1 text-danger text-center mt-">Seems Like An Error :(</h1>
+    </div>
+</ng-template>
+
+
+
+<div *ngIf="state!='failure';else error" class="container-fluid">
 
         
             <div class="row mt-5">
@@ -6,14 +15,18 @@
                     <app-searchbar></app-searchbar>
                 </div>
                 <div *ngIf="state=='success'" class="col-12 col-md-8">
-                    <div *ngFor="let car of arr">
-                        <app-vehiclecardsloading ></app-vehiclecardsloading>
+                    <div *ngFor="let car of arr;">
+                        <app-vehiclecards [vehicle]="car"></app-vehiclecards>
                     </div>
                 </div>
                 <div *ngIf="state=='loading'" class="col-12 col-md-8">
-                    <div *ngFor="let car of arr">
-                        <app-vehiclecards [vehicle]="car"></app-vehiclecards>
-                    </div>
+                    
+                        <app-vehiclecardsloading></app-vehiclecardsloading>
+                        <app-vehiclecardsloading></app-vehiclecardsloading>
+                        <app-vehiclecardsloading></app-vehiclecardsloading>
+                        <app-vehiclecardsloading></app-vehiclecardsloading>
+                        <app-vehiclecardsloading></app-vehiclecardsloading>
+                    
                 </div>
 
             </div>

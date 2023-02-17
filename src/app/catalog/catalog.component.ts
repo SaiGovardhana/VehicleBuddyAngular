@@ -26,7 +26,7 @@ export class CatalogComponent implements OnInit{
       
       this.state="success";
       }
-    );
+    ,(e)=>{this.state="failure"});
   }
 
 

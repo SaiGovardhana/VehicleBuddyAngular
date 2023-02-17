@@ -14,7 +14,7 @@ export class VehicleEndpointService
 
     getVehicles():Observable<BasicObject>
     {
-       return this.http.get<BasicObject>("/api/vehicle/allVehicles").pipe(catchError(e=>of({"success":false,data:[]})));
+       return this.http.get<BasicObject>("/api/vehicle/allVehicles");
         
     }
 }
