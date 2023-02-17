@@ -1,0 +1,16 @@
+<div class="card mb-3 mx-auto mx-md-0 col-md-12 col-8  ms-md-auto  border-bottom border-danger border-2 p-2   " >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="vehicle.pic" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title h2 text-danger">{{vehicle.fullmodel}}</h2>
+          <h3 class="card-text h3 text-danger"><i class=" fa fa-inr"></i>{{vehicle.vehicleprice}}</h3>
+          <p class="card-text mt-3 mb-0"><small><i class="fa-solid fa-location-dot me-1"></i>{{vehicle.location}}</small></p>
+          <p class="card-text mt-0"><small ><i class="fa fa-envelope me-1" ></i>{{vehicle.selleremail}}</small></p>
+          <button class="btn btn-outline-danger">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>

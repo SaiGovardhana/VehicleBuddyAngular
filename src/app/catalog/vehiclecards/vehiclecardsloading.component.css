@@ -1,0 +1,22 @@
+.card
+{
+    border: none;
+    border-radius: 0;
+
+}
+
+#cardDiv
+{
+    height: 250px;
+}
+
+@media (max-width:768px) {
+    #cardDiv
+    {
+        height: 450px;
+    }
+    .img{
+        height: 300px;
+    }
+    
+}

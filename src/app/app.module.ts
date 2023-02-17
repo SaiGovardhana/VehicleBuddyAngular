@@ -15,7 +15,10 @@ import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { SignupmodalComponent } from './signup/signupmodal/signupmodal.component';
 import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component';
-import { CatalogComponent } from './catalog/catalog.component'
+import { CatalogComponent } from './catalog/catalog.component';
+import { VehiclecardsComponent } from './catalog/vehiclecards/vehiclecards.component';
+import { SearchbarComponent } from './catalog/searchbar/searchbar.component';
+import { VehiclecardsLoadingComponent } from './catalog/vehiclecards/vehiclecardsloading.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,10 @@ import { CatalogComponent } from './catalog/catalog.component'
     SignupmodalComponent,
     SigninmodalComponent,
     CatalogComponent,
+    VehiclecardsComponent,
+    SearchbarComponent,
+    VehiclecardsLoadingComponent
+   
 
   ],
   imports: [
