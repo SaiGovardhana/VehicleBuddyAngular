@@ -15,10 +15,15 @@ import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { SignupmodalComponent } from './signup/signupmodal/signupmodal.component';
 import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { VehiclecardsComponent } from './catalog/vehiclecards/vehiclecards.component';
-import { SearchbarComponent } from './catalog/searchbar/searchbar.component';
-import { VehiclecardsLoadingComponent } from './catalog/vehiclecards/vehiclecardsloading.component';
+import { CatalogComponent } from './customer/catalog/catalog.component';
+import { VehiclecardsComponent } from './customer/catalog/vehiclecards/vehiclecards.component';
+import { SearchbarComponent } from './customer/catalog/searchbar/searchbar.component';
+import { VehiclecardsLoadingComponent } from './customer/catalog/vehiclecards/vehiclecardsloading.component';
+import { AddvehicleComponent } from './seller/addvehicle/addvehicle.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { LocationAutoCompleteComponent } from './autocompletecomponents/locationautocomplete.component';
+import { ModelAutoCompleteComponent } from './autocompletecomponents/modelautocomplete.component';
+import { BasicmodalComponent } from './basicmodal/basicmodal.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +39,19 @@ import { VehiclecardsLoadingComponent } from './catalog/vehiclecards/vehiclecard
     CatalogComponent,
     VehiclecardsComponent,
     SearchbarComponent,
-    VehiclecardsLoadingComponent
+    VehiclecardsLoadingComponent,
+    AddvehicleComponent,
+    LocationAutoCompleteComponent,
+    ModelAutoCompleteComponent,
+    BasicmodalComponent
    
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,BrowserAnimationsModule,ReactiveFormsModule, NgbModule,HttpClientModule
+    AppRoutingModule,BrowserAnimationsModule,
+    ReactiveFormsModule,NgbModule,
+    HttpClientModule,ImageCropperModule
   ],
   providers: [NgbModal,NgbActiveModal],
   bootstrap: [AppComponent]

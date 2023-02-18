@@ -31,20 +31,21 @@
               "src/assets/aos.css",
               "src/assets/faicon.css"
             ],
-            "scripts": ["src/assets/bootstrap.bundle.js","src/assets/aos.js","src/assets/faicon.js","src/assets/myinit.js"]
+            "scripts": ["src/assets/bootstrap.bundle.js","src/assets/aos.js","src/assets/faicon.js","src/assets/myinit.js",
+            "src/assets/hammer.js"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2500kb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "50kb"
                 }
               ],
               "outputHashing": "all"

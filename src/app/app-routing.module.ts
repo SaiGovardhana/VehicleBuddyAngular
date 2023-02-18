@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatalogComponent } from './catalog/catalog.component';
+import { AddvehicleComponent } from './seller/addvehicle/addvehicle.component';
+import { CatalogComponent } from './customer/catalog/catalog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './homecomponent/home.component';
 import { CustomerActivateGuard } from './RouterActivationGuards/CustomerActivateGuard';
@@ -8,14 +9,15 @@ import { LoggedInActivateGuard } from './RouterActivationGuards/LoggedInActivati
 import { LoggedOutActivateGuard } from './RouterActivationGuards/LoggedOutActivationRoute';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-
+import {SellerActivateGuard} from "./RouterActivationGuards/SellerActivationGuard"
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
   {path:"signup",component:SignupComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"signin",component:SigninComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"dashboard",component:DashboardComponent,canActivate:[LoggedInActivateGuard]},
-  {path:"user/catalog",component:CatalogComponent,canActivate:[CustomerActivateGuard]}
+  {path:"user/catalog",component:CatalogComponent,canActivate:[CustomerActivateGuard]},
+  {path:"seller/addvehicle",component:AddvehicleComponent,canActivate:[SellerActivateGuard]}
 ]
 
 

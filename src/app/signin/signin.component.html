@@ -17,7 +17,7 @@
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
                         <input formControlName="email" placement="end top"  [ngbPopover]="signInForm.get('email')?.valid ?'':'Enter A Valid Email'"
-                        type="email" id="email" placeholder="Your Email" class="form-control" />
+                        type="email" id="email" placeholder="Your Email" class="form-control shadow" />
                         <label class="form-label" for="email">Your Email</label>
                       </div>
                     </div>
@@ -27,7 +27,7 @@
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-floating flex-fill mb-0">
                         <input formControlName="password"  placement="end top"  [ngbPopover]="signInForm.get('password')?.valid ?'':'Password must contain 3 characters'"
-                        type="password" id="password" type="password" placeholder="Your Password" class="form-control" />
+                        type="password" id="password" type="password" placeholder="Your Password" class="form-control shadow" />
                         <label class="form-label" for="password">Your Password</label>
                       </div>
                     </div>
