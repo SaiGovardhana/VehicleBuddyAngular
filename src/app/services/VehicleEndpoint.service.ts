@@ -21,4 +21,14 @@ export class VehicleEndpointService
        return this.http.get<BasicObject>(`/api/vehicle/allVehicles?location=${data['location']}&model=${data["model"]}`);
         
     }
+
+    getVehicle(data:string):Observable<BasicObject>
+    {
+        return this.http.get<BasicObject>(`/api/vehicle/getVehicle?id=${data}`);
+    }
+    updateVehicle(data:BasicObject):Observable<BasicObject>
+    {
+
+        return this.http.put<BasicObject>("/api/vehicle/updateVehicle",data);
+    }
 }

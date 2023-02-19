@@ -28,6 +28,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { MyVehiclesComponent } from './seller/myvehicles/myvehicles.component';
 import { SearchresultsSellerComponent } from './seller/myvehicles/searchresults/searchresults.component';
 import { SellerVehiclecardsComponent } from './seller/myvehicles/vehiclecards/vehiclecards.component';
+import { UpdatevehicleComponent } from './seller/updatevehicle/updatevehicle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { SellerVehiclecardsComponent } from './seller/myvehicles/vehiclecards/ve
 
     MyVehiclesComponent,
     SearchresultsSellerComponent,
-    SellerVehiclecardsComponent
+    SellerVehiclecardsComponent,
+    UpdatevehicleComponent
    
 
   ],

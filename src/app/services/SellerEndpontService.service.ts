@@ -17,4 +17,8 @@ export class SellerEndpointService
        return this.http.get<BasicObject>(`/api/vehicle/seller/getVehicles?location=${data['location']}&model=${data["model"]}`);
         
     }
+
+
+
+
 }

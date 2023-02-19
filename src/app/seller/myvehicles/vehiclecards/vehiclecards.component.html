@@ -9,7 +9,7 @@
           <h3 class="card-text h3 text-danger"><i class=" fa fa-inr"></i>{{vehicle.vehicleprice}}</h3>
           <p class="card-text mt-3 mb-0"><small><i class="fa-solid fa-location-dot me-1"></i>{{vehicle.location}}</small></p>
           <p class="card-text mt-0"><small ><i class="fa fa-envelope me-1" ></i>{{vehicle.selleremail}}</small></p>
-          <button class="btn btn-outline-danger">Update Vehicle</button>
+          <a  class="btn btn-outline-danger" routerLink="/seller/updateVehicle" [queryParams]="{id:vehicle._id}" >Update Vehicle</a>
         </div>
       </div>
     </div>

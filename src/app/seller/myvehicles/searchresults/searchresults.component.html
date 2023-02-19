@@ -3,8 +3,17 @@
         <app-searchbar [locationControl]="locationControl" [modelControl]="modelControl"></app-searchbar>
     </div>
     <div *ngIf="state=='success'" class="col-12 col-md-8">
-        <div *ngFor="let car of arr;">
-            <app-seller-vehiclecards [vehicle]="car"></app-seller-vehiclecards>
+        <ng-container *ngIf="arr.length>0">
+            <h1 class="text-danger text-center">Search Resulted in :{{arr.length}} Cars</h1>
+            <div *ngFor="let car of arr;">
+                <app-seller-vehiclecards [vehicle]="car"></app-seller-vehiclecards>
+            </div>
+            
+        </ng-container>
+
+        <div *ngIf="arr.length==0">
+            <h1 class="text-danger mt-5 text-center">Couldn't Find Any Cars :(</h1>
+            
         </div>
     </div>
     <div *ngIf="state=='loading'" class="col-12 col-md-8">
