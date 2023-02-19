@@ -9,28 +9,6 @@
 
 <div *ngIf="state!='failure';else error" class="container-fluid">
 
-        
-            <div class="row mt-5">
-                <div class="col-12 col-md-4">
-                    <app-searchbar></app-searchbar>
-                </div>
-                <div *ngIf="state=='success'" class="col-12 col-md-8">
-                    <div *ngFor="let car of arr;">
-                        <app-vehiclecards [vehicle]="car"></app-vehiclecards>
-                    </div>
-                </div>
-                <div *ngIf="state=='loading'" class="col-12 col-md-8">
-                    
-                        <app-vehiclecardsloading></app-vehiclecardsloading>
-                        <app-vehiclecardsloading></app-vehiclecardsloading>
-                        <app-vehiclecardsloading></app-vehiclecardsloading>
-                        <app-vehiclecardsloading></app-vehiclecardsloading>
-                        <app-vehiclecardsloading></app-vehiclecardsloading>
-                    
-                </div>
-
-            </div>
-        
-
+        <app-searchresults (stateChange)="handleChange($event)"></app-searchresults>
 
 </div>

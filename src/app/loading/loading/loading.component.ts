@@ -16,14 +16,14 @@ import { LoadingService } from './loading.service';
       transition("* => hide",[animate('1s 200ms')]),
     ])
   ]})
-export class LoadingComponent implements OnInit {
+class LoadingComponent implements OnInit {
   loadingVisible$!:Observable<boolean>;
   constructor(private loadingservice:LoadingService,private router:Router)
   {
     
   }
   ngOnInit(): void {
-    console.log("HERE")
+ /*   console.log("HERE")
     this.loadingVisible$=this.loadingservice.loadingVisible$;
     this.router.events.subscribe((e)=>{
       
@@ -41,7 +41,7 @@ export class LoadingComponent implements OnInit {
       {
         console.log("No perm")
       }
-    });
+    });*/
   }
   
 }

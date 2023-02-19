@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { merge } from 'rxjs';
+import { BasicObject } from 'src/app/models/models';
 
 @Component({
   selector: 'app-searchbar',
@@ -8,19 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent {
-  locationControl=new FormControl("");
-  modelControl=new FormControl("");
-  
+  @Input()
+  locationControl!:FormControl
+  @Input()
+  modelControl!:FormControl
+
+
   constructor(private router:Router)
   {
 
   }
 
-  submitQuery()
-  {
-    let location=this.locationControl.value;
-    let model=this.modelControl.value;
-    this.router.navigateByUrl(`/user/catalog?location=${location}&model=${model}`);
-  }
-
+ 
 }

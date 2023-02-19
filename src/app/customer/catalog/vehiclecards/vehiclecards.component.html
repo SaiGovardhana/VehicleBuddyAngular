@@ -1,7 +1,7 @@
-<div class="card mb-3 mx-auto mx-md-0 col-md-12 col-8  ms-md-auto  border-bottom border-danger border-2 p-2   " >
+<div data-aos="fade-left" class="card mb-3 mx-auto mx-md-0 col-md-12 col-8  ms-md-auto  border-bottom border-danger border-2 p-2   " >
     <div class="row g-0">
       <div class="col-md-4">
-        <img [src]="vehicle.pic" class="img w-100 img-fluid rounded-start" alt="...">
+        <img [defaultImage]="defaultImg" [lazyLoad]="vehicle.pic" class="img w-100 img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">

@@ -16,7 +16,7 @@ export class ModelAutoCompleteComponent
         
     model:OperatorFunction<string,string[]>=(text$:Observable<string>)=>
     { 
-       return text$.pipe(debounceTime(1000)).pipe(switchMap(word=>(word.length<3)?of([]):this.autoCompleteService.getAutoCompleteModel(word)));
+       return text$.pipe(debounceTime(300)).pipe(switchMap(word=>(word.length<3)?of([]):this.autoCompleteService.getAutoCompleteModel(word)));
     }
     constructor(private autoCompleteService:AutoCompleteEndpointService)
     {

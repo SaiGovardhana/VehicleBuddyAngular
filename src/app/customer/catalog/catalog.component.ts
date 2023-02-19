@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChildActivationStart, Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
 import { VehicleModel } from '../..//models/models';
 import { VehicleEndpointService } from '../../services/VehicleEndpoint.service';
@@ -9,31 +9,24 @@ import { VehicleEndpointService } from '../../services/VehicleEndpoint.service';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent implements OnInit,OnDestroy{
+export class CatalogComponent {
 
   subscription!:Subscription;
   arr!:VehicleModel[]
   state='loading'
+  location=""
+  model=""
   constructor(private vehicleService:VehicleEndpointService,private router:Router)
   {
 
   }
 
-  ngOnInit()
-  {  
-    this.subscription=this.vehicleService.getVehicles().pipe(map(x=>x["data"] as VehicleModel[])).subscribe
-    (
-      x=>{this.arr=x;
-      
-      this.state="success";
-      }
-    ,(e)=>{this.state="failure"});
+  handleChange(event:string)
+  {
+    this.state=event;
+    console.log("Recieved" ,event);
   }
 
-  ngOnDestroy(): void {
-    if(this.subscription!=null&&!this.subscription.closed)
-      this.subscription.unsubscribe()
 
-  }
 
 }

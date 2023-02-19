@@ -7,12 +7,11 @@ import { HomeComponent } from './homecomponent/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import { LoadingComponent } from './loading/loading/loading.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { SignupmodalComponent } from './signup/signupmodal/signupmodal.component';
 import { SigninmodalComponent } from './signin/signinmodal/signinmodal.component';
 import { CatalogComponent } from './customer/catalog/catalog.component';
@@ -24,7 +23,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { LocationAutoCompleteComponent } from './autocompletecomponents/locationautocomplete.component';
 import { ModelAutoCompleteComponent } from './autocompletecomponents/modelautocomplete.component';
 import { BasicmodalComponent } from './basicmodal/basicmodal.component';
-
+import { SearchresultsComponent } from './customer/catalog/searchresults/searchresults.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,7 @@ import { BasicmodalComponent } from './basicmodal/basicmodal.component';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    LoadingComponent,
+    
     DashboardComponent,
     SignupmodalComponent,
     SigninmodalComponent,
@@ -43,7 +43,8 @@ import { BasicmodalComponent } from './basicmodal/basicmodal.component';
     AddvehicleComponent,
     LocationAutoCompleteComponent,
     ModelAutoCompleteComponent,
-    BasicmodalComponent
+    BasicmodalComponent,
+    SearchresultsComponent,
    
 
   ],
@@ -51,7 +52,7 @@ import { BasicmodalComponent } from './basicmodal/basicmodal.component';
     BrowserModule,
     AppRoutingModule,BrowserAnimationsModule,
     ReactiveFormsModule,NgbModule,
-    HttpClientModule,ImageCropperModule
+    HttpClientModule,ImageCropperModule,LazyLoadImageModule
   ],
   providers: [NgbModal,NgbActiveModal],
   bootstrap: [AppComponent]
