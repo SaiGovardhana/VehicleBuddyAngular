@@ -10,6 +10,7 @@ import { LoggedOutActivateGuard } from './RouterActivationGuards/LoggedOutActiva
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import {SellerActivateGuard} from "./RouterActivationGuards/SellerActivationGuard"
+import { MyVehiclesComponent } from './seller/myvehicles/myvehicles.component';
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
@@ -17,7 +18,8 @@ const basicRoutes:Routes=[
   {path:"signin",component:SigninComponent,canActivate:[LoggedOutActivateGuard]},
   {path:"dashboard",component:DashboardComponent,canActivate:[LoggedInActivateGuard]},
   {path:"user/catalog",component:CatalogComponent,canActivate:[CustomerActivateGuard]},
-  {path:"seller/addvehicle",component:AddvehicleComponent,canActivate:[SellerActivateGuard]}
+  {path:"seller/addvehicle",component:AddvehicleComponent,canActivate:[SellerActivateGuard]},
+  {path:"seller/myvehicles",component:MyVehiclesComponent,canActivate:[SellerActivateGuard]}
 ]
 
 

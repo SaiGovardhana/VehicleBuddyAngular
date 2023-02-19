@@ -25,6 +25,9 @@ import { ModelAutoCompleteComponent } from './autocompletecomponents/modelautoco
 import { BasicmodalComponent } from './basicmodal/basicmodal.component';
 import { SearchresultsComponent } from './customer/catalog/searchresults/searchresults.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { MyVehiclesComponent } from './seller/myvehicles/myvehicles.component';
+import { SearchresultsSellerComponent } from './seller/myvehicles/searchresults/searchresults.component';
+import { SellerVehiclecardsComponent } from './seller/myvehicles/vehiclecards/vehiclecards.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,10 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     ModelAutoCompleteComponent,
     BasicmodalComponent,
     SearchresultsComponent,
+
+    MyVehiclesComponent,
+    SearchresultsSellerComponent,
+    SellerVehiclecardsComponent
    
 
   ],

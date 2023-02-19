@@ -1,0 +1,14 @@
+<ng-template #error>
+    <div style="height:80vh" class=" d-flex flex-column justify-content-center my-auto">
+        <i class='text-danger mt-5 col-12 fa-solid fa-5x  fa-car-crash'></i>
+        <h1 class="h1 text-danger text-center mt-">Seems Like An Error :(</h1>
+    </div>
+</ng-template>
+
+
+
+<div *ngIf="state!='failure';else error" class="container-fluid">
+
+        <app-seller-searchresults (stateChange)="handleChange($event)"></app-seller-searchresults>
+
+</div>
