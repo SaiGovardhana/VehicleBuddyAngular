@@ -12,6 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 import {SellerActivateGuard} from "./RouterActivationGuards/SellerActivationGuard"
 import { MyVehiclesComponent } from './seller/myvehicles/myvehicles.component';
 import { UpdatevehicleComponent } from './seller/updatevehicle/updatevehicle.component';
+import { BookvehicleComponent } from './customer/bookvehicle/bookvehicle.component';
+import { MybookingsComponent } from './customer/mybookings/mybookings.component';
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
@@ -21,7 +23,9 @@ const basicRoutes:Routes=[
   {path:"user/catalog",component:CatalogComponent,canActivate:[CustomerActivateGuard]},
   {path:"seller/addvehicle",component:AddvehicleComponent,canActivate:[SellerActivateGuard]},
   {path:"seller/myvehicles",component:MyVehiclesComponent,canActivate:[SellerActivateGuard]},
-  {path:"seller/updateVehicle",component:UpdatevehicleComponent,canActivate:[SellerActivateGuard]}
+  {path:"seller/updateVehicle",component:UpdatevehicleComponent,canActivate:[SellerActivateGuard]},
+  {path:'user/booknow',component:BookvehicleComponent,canActivate:[CustomerActivateGuard]},
+  {path:'user/mybookings',component:MybookingsComponent}
 
 ]
 

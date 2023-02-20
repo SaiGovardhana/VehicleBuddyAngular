@@ -31,4 +31,9 @@ export class VehicleEndpointService
 
         return this.http.put<BasicObject>("/api/vehicle/updateVehicle",data);
     }
+
+    bookVehicle(vehicleid:string,date:string)
+    {
+        return this.http.post<BasicObject>("/api/book/bookVehicle",{vehicleid:vehicleid,date:date});
+    }
 }

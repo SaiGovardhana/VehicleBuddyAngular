@@ -6,7 +6,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title h2 text-danger">{{vehicle.fullmodel}}</h2>
-          <h3 class="card-text h3 text-danger"><i class=" fa fa-inr"></i>{{vehicle.vehicleprice}}</h3>
+          <h3 class="card-text h3 text-danger"><i class=" fa fa-inr"></i>{{vehicle.vehicleprice}} / Per Day</h3>
           <p class="card-text mt-3 mb-0"><small><i class="fa-solid fa-location-dot me-1"></i>{{vehicle.location}}</small></p>
           <p class="card-text mt-0"><small ><i class="fa fa-envelope me-1" ></i>{{vehicle.selleremail}}</small></p>
           <a  class="btn btn-outline-danger" routerLink="/seller/updateVehicle" [queryParams]="{id:vehicle._id}" >Update Vehicle</a>

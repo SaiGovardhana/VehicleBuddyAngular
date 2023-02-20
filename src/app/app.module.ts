@@ -29,6 +29,9 @@ import { MyVehiclesComponent } from './seller/myvehicles/myvehicles.component';
 import { SearchresultsSellerComponent } from './seller/myvehicles/searchresults/searchresults.component';
 import { SellerVehiclecardsComponent } from './seller/myvehicles/vehiclecards/vehiclecards.component';
 import { UpdatevehicleComponent } from './seller/updatevehicle/updatevehicle.component';
+import { BookvehicleComponent } from './customer/bookvehicle/bookvehicle.component';
+import { MybookingsComponent } from './customer/mybookings/mybookings.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,10 @@ import { UpdatevehicleComponent } from './seller/updatevehicle/updatevehicle.com
     MyVehiclesComponent,
     SearchresultsSellerComponent,
     SellerVehiclecardsComponent,
-    UpdatevehicleComponent
+    UpdatevehicleComponent,
+    BookvehicleComponent,
+    MybookingsComponent,
+  
    
 
   ],
