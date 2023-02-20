@@ -32,8 +32,18 @@ export class VehicleEndpointService
         return this.http.put<BasicObject>("/api/vehicle/updateVehicle",data);
     }
 
-    bookVehicle(vehicleid:string,date:string)
+    bookVehicle(vehicleid:string,date:string):Observable<BasicObject>
     {
         return this.http.post<BasicObject>("/api/book/bookVehicle",{vehicleid:vehicleid,date:date});
+    }
+
+    getCustomerBookings():Observable<BasicObject>
+    {
+        return this.http.get<BasicObject>("api/book/getCustomerBookings");
+    }
+
+    getSellerBookings():Observable<BasicObject>
+    {
+        return this.http.get<BasicObject>("api/book/getSellerBookings");
     }
 }

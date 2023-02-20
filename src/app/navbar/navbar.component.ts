@@ -6,8 +6,8 @@ import { BasicObject, userModel } from '../models/models';
 import { AuthStore } from '../services/auth.service';
 import { NavBarService } from './navbar.service';
 
-const customerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/user/catalog",text:"Book Now"},{path:"/mybookings",text:"My Bookings"}];
-const sellerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/seller/addvehicle",text:"Add Vehicle"},{path:"/seller/myvehicles",text:"My Vehicles"}];
+const customerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/user/catalog",text:"Book Now"},{path:"/user/mybookings",text:"My Bookings"}];
+const sellerNavs=[{path:"/dashboard",text:"Dashboard"},{path:"/seller/addvehicle",text:"Add Vehicle"},{path:"/seller/myvehicles",text:"My Vehicles"},{path:"/seller/myrevenue",text:"My Revenue"}];
 const navs:BasicObject={customer:customerNavs,seller:sellerNavs,default:null}
 
 

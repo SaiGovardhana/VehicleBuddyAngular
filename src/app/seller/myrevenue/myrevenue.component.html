@@ -1,6 +1,10 @@
 
 <div style="overflow-x:auto ;" class="container-fluid mt-5" *ngIf="state == 'success' && bookings.length>0 ">
-    <h1 class="text-center mb-5">Hey,<span class="text-danger me-2"><i>{{(authStore.currentUser$ | async)?.name}}</i></span> Heres Your Bookings<br>You Have  {{bookings.length}} Bookings</h1>
+    <h1 class="text-center mb-5">Hey,<span class="text-danger me-2"><i>{{(authStore.currentUser$ | async)?.name}}</i></span> Heres Your Bookings For Your Vehicles.</h1>
+    <div class="d-flex text-danger border-bottom border-danger justify-content-between px-2 mb-5">
+        <h3 class="h3 mx-3"> Total Revenue is  <br><i class="fa fa-inr ms-2 "></i> {{bookings|revenuepipe}}</h3>
+        <h3 class="h3 mx-3 text-end"> Total bookings are <br> {{bookings.length}}</h3>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr class="text-center text-danger h5">
@@ -13,7 +17,7 @@
         <tbody>
             <tr *ngFor="let booking of currentPage" class="text-center ">
                 <td class="fw-bold" scope="row">{{ booking["bookingdate"]  | date }}</td>
-                <td scope="row" class="fw-bold"><a class="link-danger fw-bold" ngbTooltip="Take To Vehicle Booking" routerLink="/user/booknow" [queryParams]="{id:booking['vehicleid']}">{{ booking["vehiclename"] }}</a></td>
+                <td scope="row" class="fw-bold"><a class="link-danger fw-bold" ngbTooltip="Take To Vehicle Booking" routerLink="/seller/updateVehicle" [queryParams]="{id:booking['vehicleid']}">{{ booking["vehiclename"] }}</a></td>
                 <td scope="row" class="fw-bold">{{ booking["vehiclelocation"] }}</td>
                 <td scope="row" class="fw-bold"><i class="fa fa-inr"></i>{{ booking["vehicleprice"] }}/Per Day</td>
 
@@ -37,7 +41,7 @@
 </div>
 
 <div  class="d-flex justify-content-center mt-5 align-items-center" style="height: 70vh;" *ngIf="state == 'success' && bookings.length==0 ">
-    <h1 class="text-center mb-5">Hey,<span class="text-danger me-2"><i>{{(authStore.currentUser$ | async)?.name}}</i></span> You Dont Have Any Bookings.</h1>
+    <h1 class="text-center mb-5">Hey,<span class="text-danger me-2"><i>{{(authStore.currentUser$ | async)?.name}}</i></span> Your Vehicles Dont Have Any Bookings. :(</h1>
 </div>
 
 <ng-container *ngIf="state=='failure'" class="container-fluid mt-5 p-5">

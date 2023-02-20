@@ -4,11 +4,11 @@ import { AuthStore } from 'src/app/services/auth.service';
 import { VehicleEndpointService } from 'src/app/services/VehicleEndpoint.service';
 
 @Component({
-  selector: 'app-mybookings',
-  templateUrl: './mybookings.component.html',
-  styleUrls: ['./mybookings.component.css']
+  selector: 'app-myrevenue',
+  templateUrl: './myrevenue.component.html',
+  styleUrls: ['./myrevenue.component.css']
 })
-export class MybookingsComponent implements OnInit,OnDestroy{
+export class MyrevenueComponent implements OnInit,OnDestroy {
   state="loading";
   bookings=[];
   totalBookings!:number
@@ -26,7 +26,7 @@ export class MybookingsComponent implements OnInit,OnDestroy{
 
   ngOnInit()
   {
-    this.httpSubscriber$=this.vehicleService.getCustomerBookings().subscribe(
+    this.httpSubscriber$=this.vehicleService.getSellerBookings().subscribe(
       (data)=>
       {
         if(data["success"])
@@ -60,4 +60,5 @@ export class MybookingsComponent implements OnInit,OnDestroy{
     this.currentPage=this.bookings.slice((this.curPage-1)*5,(this.curPage)*5);
     console.log(this.currentPage)
   }
+
 }

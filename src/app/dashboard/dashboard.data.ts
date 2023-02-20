@@ -2,7 +2,7 @@ export const cards={"customer":[{
     title:"My Bookings",
     description:"See your previous and current bookings that you made",
     icon:"fa-book",
-    link:"/user/bookings"
+    link:"/user/mybookings"
   },
   {
     title:"Profile",
