@@ -1,0 +1,20 @@
+::ng-deep ngb-typeahead-window {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+::ng-deep .dropdown-item:hover,::ng-deep .active 
+{ background-color:#dc3545 !important;
+  color: white;
+}
+
+input.ng-valid  {
+  border-bottom: 5px solid #42A948; /* green */
+}
+
+
+.ng-invalid:not(form)  {
+  border-bottom: 5px solid #a94442; /* red */
+}
+

@@ -1,30 +1,26 @@
-import { Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { Subscription } from 'rxjs';
-import { BasicmodalComponent } from 'src/app/basicmodal/basicmodal.component';
-import { defaultImage } from 'src/app/defaultImage/DefaultImage';
-import { BasicObject } from 'src/app/models/models';
-import { VehicleEndpointService } from 'src/app/services/VehicleEndpoint.service';
-
-const PostiveValidator:ValidatorFn=(control)=>
-{
-  return control.value<0?{"error":true}:null;
-}
+import { BasicmodalComponent } from '../basicmodal/basicmodal.component';
+import { defaultImage } from '../defaultImage/DefaultImage';
+import { BasicObject, userModel } from '../models/models';
+import { AuthStore } from '../services/auth.service';
+import { UserEndpoint } from '../services/UserEndpoint.service';
 @Component({
-  selector: 'app-updatevehicle',
-  templateUrl: './updatevehicle.component.html',
-  styleUrls: ['./updatevehicle.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class UpdatevehicleComponent implements OnInit,OnDestroy{
+export class ProfileComponent {
 
   defaultImage=defaultImage
   locationContol=new FormControl("",[Validators.required,Validators.minLength(3)])
-  modelControl=new FormControl("",[Validators.required,Validators.minLength(3)])
-  priceControl=new FormControl(0,[Validators.required,PostiveValidator])
-  addVehicleForm=new FormGroup({"locationControl":this.locationContol,"modelControl":this.modelControl,"priceControl":this.priceControl})
+
+  nameControl=new FormControl("",[Validators.required])
+  updateUserForm=new FormGroup({"locationControl":this.locationContol,"nameControl":this.nameControl})
 
 
   imageChangedEvent: any = '';
@@ -33,8 +29,8 @@ export class UpdatevehicleComponent implements OnInit,OnDestroy{
   croppedImage: any = '';
   @ViewChild("modal")
     modal!:TemplateRef<any>;
-  @ViewChild("vehicleimage",{read:ElementRef})
-    vehicleImage!:ElementRef<HTMLImageElement>;
+  @ViewChild("profileimage",{read:ElementRef})
+    userImage!:ElementRef<HTMLImageElement>;
   displayImage!:string
   modalRef!:NgbModalRef  ;
   @ViewChild("modalcomponent")
@@ -43,26 +39,26 @@ export class UpdatevehicleComponent implements OnInit,OnDestroy{
 
   state="loading"
 
-  constructor(private modalService:NgbModal,private router:Router,private vehicleService:VehicleEndpointService)
+  constructor(private authStore:AuthStore,private modalService:NgbModal,private router:Router,private userService:UserEndpoint)
   {
 
   }
   ngOnInit(): void 
-  { let vehicleId=this.router.routerState.snapshot.root.queryParamMap.get("id");
-    this.httpSubscriber$=this.vehicleService.getVehicle(vehicleId as string).subscribe
+  { 
+    this.httpSubscriber$=this.userService.getLoggedInUser().subscribe
     (
       (data)=>
       {
         if(data["success"])
         {
           this.state="success";
-          let vehicle:BasicObject=data["data"];
+          let user:BasicObject=data["data"];
           
-          
-          this.displayImage=vehicle["pic"] as string
-          this.addVehicleForm.setValue({locationControl:vehicle["location"] as string,
-                                        modelControl:vehicle["fullmodel"] as string,
-                                        priceControl:vehicle["vehicleprice"] as number
+          console.log(user);
+
+          this.displayImage=user["profilepic"] as string
+          this.updateUserForm.setValue({locationControl:user["location"]?user["location"]:"" ,
+                                        nameControl:user["name"] 
                                         
                                       });
         }
@@ -110,20 +106,20 @@ export class UpdatevehicleComponent implements OnInit,OnDestroy{
 
   submitForm()
   {
+    
     let data:BasicObject={};
     
     
-    if(this.addVehicleForm.valid)
+    if(this.updateUserForm.valid)
     {
-      //vehicleprice,model,location,profilepic
-    data["vehicleprice"]=this.priceControl.value;
-    data["profilepic"]=this.vehicleImage.nativeElement.src;
-    data["location"]=this.locationContol.value;
-    data["model"]=this.modelControl.value
-    data["id"]=this.router.routerState.snapshot.root.queryParamMap.get("id");
     
+    data["profilepic"]=this.userImage.nativeElement.src;
+    data["location"]=this.locationContol.value;
+    data["name"]=this.nameControl.value;
+    let user:userModel=this.authStore.getCurrentUser();
+    data["email"]=user.email;
     this.modalComponent.open('loading');
-    this.httpSubscriber$= this.vehicleService.updateVehicle(data).subscribe((res)=>
+    this.httpSubscriber$= this.userService.updateUser(data).subscribe((res)=>
     { 
       if(res["success"])
       {   
@@ -142,7 +138,7 @@ export class UpdatevehicleComponent implements OnInit,OnDestroy{
       this.modalComponent.state="failure";});
     }
     else
-    {   console.log("Here");
+    {  
         this.modalComponent.open("invalid");
     }
 

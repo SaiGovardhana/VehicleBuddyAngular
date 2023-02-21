@@ -1,0 +1,79 @@
+<app-basicmodal #modalcomponent></app-basicmodal>
+<ng-template #modal>
+    <div class="d-flex p-3 flex-column">
+      <div
+        class="h2 text-danger text-center border-bottom border-3 border-danger">
+        Crop Image
+      </div>
+      <image-cropper
+        
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 3"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+
+      ></image-cropper>
+      <div class="d-flex justify-content-evenly">
+        <button (click)="saveImage()" class="btn btn-outline-success">Save</button>
+        <button (click)="exitModal()" class="btn btn-outline-danger">Cancel</button>
+      </div>
+    </div>
+  </ng-template>
+  
+  <form *ngIf="state=='success'" (ngSubmit)="submitForm()" [formGroup]="updateUserForm" class="p-3 mt-3 container-fluid">
+    <div class="row"><h1 class="h1 text-danger text-center">Update User</h1></div>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8 col-10">
+        <img #profileimage class="img img-fluid w-100 shadow" [lazyLoad]="displayImage" [defaultImage]="defaultImage" alt="" />
+        <input type="file" name="img" class="mt-3 shadow  form-control" placeholder="Add Image"(change)="fileChangeEvent($event)"/>
+      </div>
+      
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5  col-10 mt-5">
+        
+        <div class="form-floating flex-fill mb-0">
+          <input
+            type="text"
+            id="location"
+            placeholder="Name"
+            class="form-control shadow"
+            
+            
+            [formControl]="nameControl"
+          
+          
+          />
+          <label class="form-label" for="location">Name</label>
+      </div>
+        
+      </div>
+      <div class="col-md-5 col-10 mt-5">
+        <app-autcomplete-location [locationControl]="locationContol"></app-autcomplete-location>
+      </div>
+
+    </div>
+    <div class="row  mt-4  justify-content-center mt-2">
+     
+        <input type="submit" class="btn col-sm-4  col-8 mb-2 btn-outline-danger" name="Add Vehicle">
+      
+    </div>
+  </form>
+  
+
+    <div *ngIf="state=='loading'" class="container-fluid mt-5 p-5">
+      <div class="row  justify-content-center">
+      <div style="width: 5rem; height: 5rem;" class="text-danger m-auto spinner-border m-5 h1" role="status">
+        <span class="h1  sr-only">Loading...</span>
+      </div>
+      <h1 class="text-center mt-5 text-danger">Fetching Data</h1>
+    </div>
+    </div>
+
+    <ng-container *ngIf="state=='failure'" class="container-fluid mt-5 p-5">
+      <div style="height:80vh" class=" d-flex flex-column justify-content-center my-auto">
+        <i class='text-danger mt-5 col-12 fa-solid fa-5x  fa-car-crash'></i>
+        <h1 class="h1 text-danger text-center mt-">Seems Like An Error :(</h1>
+    </div>
+    </ng-container>

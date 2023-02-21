@@ -1,19 +1,21 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, catchError, filter, Observable, of, tap } from "rxjs";
 import { BasicObject, userModel } from "../models/models";
+import { NavBarService } from "../navbar/navbar.service";
 
 
 @Injectable(
     {
-        providedIn:'root'
+        providedIn:'root',
+        
     }
 )
-export class AuthStore
+export class AuthStore 
 {   private subject$:BehaviorSubject<userModel>;
     currentUser$:Observable<userModel>;
     
-    constructor(private http:HttpClient)
+    constructor(private http:HttpClient,private navBarService:NavBarService)
     {   let defaultRole:userModel={name:"",email:"",role:"default",password:""};
         this.subject$=new BehaviorSubject(defaultRole);
         if(localStorage.getItem("userDetails")!=undefined&&localStorage.getItem("userDetails")!=null)
@@ -21,9 +23,14 @@ export class AuthStore
                 this.subject$.next(JSON.parse(localStorage.getItem("userDetails") as string) as userModel);
             }
         this.currentUser$=this.subject$.asObservable().pipe();
+        console.log("HERE")
+        this.refreshUser();
     }
-    
 
+    getCurrentUser():userModel
+    {
+        return this.subject$.value;
+    }
 
     addUser(data:BasicObject):Observable<BasicObject>
     {
@@ -50,14 +57,32 @@ export class AuthStore
                 res=>{if(res["success"])
                 {
                     console.log("Added user to local storage");
+                    let data=res["data"] as userModel;
                     localStorage.setItem("userDetails",JSON.stringify(res["data"]));
-                    data=res["data"] as userModel;
+                    
                     this.subject$.next(data);
                 }
                 }
             ));
     }
 
+    refreshUser()
+    {
+        return this.http.get<BasicObject>('/api/user/auth/loggedin').pipe(catchError(
+            ()=>of({"success":false,"message":"An error occurred."})
+            )).pipe(tap(
+                res=>{res = res as BasicObject
+                    if(res["success"])
+                {
+                    console.log("Added user to local storage");
+                    let data=res["data"] as userModel;
+                    localStorage.setItem("userDetails",JSON.stringify(data ));
+                    this.subject$.next(data);
+                    
+                }
+                }
+            )).subscribe(e=>{});
+    }
     
     signOut()
     {   console.log("Signing Out");

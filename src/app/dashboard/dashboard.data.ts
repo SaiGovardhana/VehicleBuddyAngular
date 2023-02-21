@@ -8,7 +8,7 @@ export const cards={"customer":[{
     title:"Profile",
     description:"Make changes to your profile. Upload pic,name .etc ",
     icon:"fa-person",
-    link:"/user/profile"
+    link:"/profile"
 
   },
   {
@@ -36,6 +36,13 @@ export const cards={"customer":[{
         description:"The money that you made in the app.",
         icon:"fa-inr",
         link:"/seller/myrevenue"
+    },
+    {
+      title:"Profile",
+      description:"Make changes to your profile. Upload pic,name .etc ",
+      icon:"fa-person",
+      link:"/profile"
+  
     }
 
 ]

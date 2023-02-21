@@ -15,6 +15,7 @@ import { UpdatevehicleComponent } from './seller/updatevehicle/updatevehicle.com
 import { BookvehicleComponent } from './customer/bookvehicle/bookvehicle.component';
 import { MybookingsComponent } from './customer/mybookings/mybookings.component';
 import { MyrevenueComponent } from './seller/myrevenue/myrevenue.component';
+import { ProfileComponent } from './profile/profile.component';
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
@@ -27,8 +28,8 @@ const basicRoutes:Routes=[
   {path:"seller/updateVehicle",component:UpdatevehicleComponent,canActivate:[SellerActivateGuard]},
   {path:'user/booknow',component:BookvehicleComponent,canActivate:[CustomerActivateGuard]},
   {path:'user/mybookings',component:MybookingsComponent,canActivate:[CustomerActivateGuard]},
-  {path:'seller/myrevenue',component:MyrevenueComponent,canActivate:[SellerActivateGuard]}
-
+  {path:'seller/myrevenue',component:MyrevenueComponent,canActivate:[SellerActivateGuard]},
+  {path:'profile',component:ProfileComponent}
 ]
 
 

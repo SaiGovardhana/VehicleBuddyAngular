@@ -33,6 +33,7 @@ import { BookvehicleComponent } from './customer/bookvehicle/bookvehicle.compone
 import { MybookingsComponent } from './customer/mybookings/mybookings.component';
 import { MyrevenueComponent } from './seller/myrevenue/myrevenue.component';
 import { RevenueSumPipe } from './seller/myrevenue/RevenueSum.pipe';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { RevenueSumPipe } from './seller/myrevenue/RevenueSum.pipe';
     BookvehicleComponent,
     MybookingsComponent,
     MyrevenueComponent,
-    RevenueSumPipe
+    RevenueSumPipe,
+    ProfileComponent
   
    
 
