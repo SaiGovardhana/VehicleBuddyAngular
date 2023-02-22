@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
 import { BehaviorSubject, catchError, filter, Observable, of, tap } from "rxjs";
 import { BasicObject, userModel } from "../models/models";
 import { NavBarService } from "../navbar/navbar.service";
+
 
 
 @Injectable(
@@ -15,7 +17,7 @@ export class AuthStore
 {   private subject$:BehaviorSubject<userModel>;
     currentUser$:Observable<userModel>;
     
-    constructor(private http:HttpClient,private navBarService:NavBarService)
+    constructor(private http:HttpClient,private navBarService:NavBarService,private cookieService:CookieService)
     {   let defaultRole:userModel={name:"",email:"",role:"default",password:""};
         this.subject$=new BehaviorSubject(defaultRole);
         if(localStorage.getItem("userDetails")!=undefined&&localStorage.getItem("userDetails")!=null)
@@ -80,6 +82,7 @@ export class AuthStore
                     this.subject$.next(data);
                     
                 }
+                
                 }
             )).subscribe(e=>{});
     }
@@ -89,6 +92,8 @@ export class AuthStore
         let defaultRole:userModel={name:"",email:"",role:"default"};
         localStorage.removeItem("userDetails");
         this.subject$.next(defaultRole);
+        if(this.cookieService.check('user'))
+            this.cookieService.delete('user');
 
 
     }

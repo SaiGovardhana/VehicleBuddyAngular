@@ -34,6 +34,7 @@ import { MybookingsComponent } from './customer/mybookings/mybookings.component'
 import { MyrevenueComponent } from './seller/myrevenue/myrevenue.component';
 import { RevenueSumPipe } from './seller/myrevenue/RevenueSum.pipe';
 import { ProfileComponent } from './profile/profile.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -64,18 +65,19 @@ import { ProfileComponent } from './profile/profile.component';
     MybookingsComponent,
     MyrevenueComponent,
     RevenueSumPipe,
-    ProfileComponent
+    ProfileComponent,
+  
   
    
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,HttpClientModule,
     AppRoutingModule,BrowserAnimationsModule,
-    ReactiveFormsModule,NgbModule,
-    HttpClientModule,ImageCropperModule,LazyLoadImageModule
+    ReactiveFormsModule,NgbModule,ImageCropperModule,LazyLoadImageModule
+      
   ],
-  providers: [NgbModal,NgbActiveModal],
+  providers: [NgbModal,NgbActiveModal,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
