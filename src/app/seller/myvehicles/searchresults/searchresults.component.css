@@ -1,0 +1,27 @@
+ngb-pagination
+{
+    justify-content:center ;
+}
+
+::ng-deep ngb-pagination   .page-item.active .page-link {
+    background-color:red;
+    
+    
+    color: white !important;
+  }
+
+ ::ng-deep .active
+  {
+    border-color: red !important;
+    background-color: red !important;
+  }
+  ::ng-deep .active > .page-link
+  {
+    border-color: red !important;
+    background-color: red !important;
+  }
+  ::ng-deep ngb-pagination .page-link
+  {
+    
+    color: red !important;
+  }

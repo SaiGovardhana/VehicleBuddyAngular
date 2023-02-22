@@ -15,7 +15,8 @@ export class SearchbarComponent {
   @Input()
   modelControl!:FormControl
 
-
+  @Input()
+  priceSort!:FormControl
   constructor(private router:Router)
   {
 

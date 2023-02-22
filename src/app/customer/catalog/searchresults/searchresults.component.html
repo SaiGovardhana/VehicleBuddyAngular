@@ -1,13 +1,19 @@
 <div class="row mt-5">
     <div class="col-12 col-md-4">
-        <app-searchbar [locationControl]="locationControl" [modelControl]="modelControl"></app-searchbar>
+        <app-searchbar [priceSort]="priceSortControl" [locationControl]="locationControl" [modelControl]="modelControl"></app-searchbar>
     </div>
     <div *ngIf="state=='success'" class="col-12 col-md-8">
         <ng-container *ngIf="arr.length>0">
             <h1 class="text-danger text-center">Search Resulted in :{{arr.length}} Cars</h1>
-            <div *ngFor="let car of arr;">
+            <div *ngFor="let car of arr | slice: (page-1) * 5 : page * 5">
                 <app-vehiclecards [vehicle]="car"></app-vehiclecards>
             </div>
+            <ngb-pagination
+            class="d-flex "
+            [(page)]="page"
+            [pageSize]="5"
+            [collectionSize]="arr.length">
+        </ngb-pagination>
             
         </ng-container>
 
@@ -15,6 +21,7 @@
             <h1 class="text-danger mt-5 text-center">Couldn't Find Any Cars :(</h1>
             
         </div>
+        
     </div>
     <div *ngIf="state=='loading'" class="col-12 col-md-8">
         

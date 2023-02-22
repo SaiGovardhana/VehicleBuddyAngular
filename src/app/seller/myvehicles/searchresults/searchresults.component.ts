@@ -13,7 +13,10 @@ import { SellerEndpointService } from 'src/app/services/SellerEndpontService.ser
 export class SearchresultsSellerComponent implements OnInit,OnDestroy{
   locationControl=new FormControl();
   modelControl=new FormControl();
-  formGroup=new FormGroup({"location":this.locationControl,"model":this.modelControl});
+  priceSortControl=new FormControl("asc");
+
+  page=1
+  formGroup=new FormGroup({"priceSort":this.priceSortControl,"location":this.locationControl,"model":this.modelControl});
   subscription!:Subscription;
   arr!:VehicleModel[]
   state='loading'
@@ -21,18 +24,28 @@ export class SearchresultsSellerComponent implements OnInit,OnDestroy{
     stateEmitter= new EventEmitter<string>
   constructor(private sellerService:SellerEndpointService,private router:Router)
   {
-
+    
   }
   ngOnInit()
   { this.formGroup.valueChanges.pipe(tap(x=>this.state="loading")).pipe(debounceTime(1000)).subscribe(x=>this.onSubmit());
     this.subscription=this.sellerService.getVehicles({location:"",model:""}).pipe(map(x=>x["data"] as VehicleModel[])).subscribe
     (
-      x=>{this.arr=x;
-      
+      x=>{
+      this.arr=x;
+      if(this.priceSortControl.value == "asc")
+      {
+        this.arr.sort((a,b)=>Number.parseInt(a.vehicleprice)-Number.parseInt(b.vehicleprice));
+        
+      }
+      else
+      {
+        this.arr.sort((a,b)=>-(Number.parseInt(a.vehicleprice)-Number.parseInt(b.vehicleprice)));
+      }
       this.state="success";
       this.stateEmitter.emit("success");
       }
     ,(e)=>{this.state="failure";this.stateEmitter.emit("failure")});
+    
   }
 
   onSubmit()
@@ -41,8 +54,17 @@ export class SearchresultsSellerComponent implements OnInit,OnDestroy{
     this.state="loading";
     this.subscription=this.sellerService.getVehicles({location:location?location:"",model:model?model:""}).pipe(map(x=>x["data"] as VehicleModel[])).subscribe
     (
-      x=>{this.arr=x;
-        
+      x=>{
+      this.arr=x;
+      if(this.priceSortControl.value == "asc")
+        {
+          this.arr.sort((a,b)=>Number.parseInt(a.vehicleprice)-Number.parseInt(b.vehicleprice));
+
+        }
+      else
+      {
+        this.arr.sort((a,b)=>-(Number.parseInt(a.vehicleprice)-Number.parseInt(b.vehicleprice)));
+      }
       this.state="success";
       this.stateEmitter.emit("success");
       }
