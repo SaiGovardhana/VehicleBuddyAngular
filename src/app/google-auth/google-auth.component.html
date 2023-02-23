@@ -1,0 +1,51 @@
+<app-signupmodal #modal></app-signupmodal>
+<div *ngIf="state=='loading'" class="container-fluid mt-5 p-5">
+    <div class="row  justify-content-center">
+    <div style="width: 5rem; height: 5rem;" class="text-danger m-auto spinner-border m-5 h1" role="status">
+      <span class="h1  sr-only">Loading...</span>
+    </div>
+    <h1 class="text-center mt-5 text-danger">Fetching Data</h1>
+  </div>
+  </div>
+
+  <ng-container *ngIf="state=='failure'" class="container-fluid mt-5 p-5">
+    <div style="height:80vh" class=" d-flex flex-column justify-content-center my-auto">
+      <i class='text-danger mt-5 col-12 fa-solid fa-5x  fa-car-crash'></i>
+      <h1 class="h1 text-danger text-center mt-">Seems Like An Error :(</h1>
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="state=='success'">
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <h2 class="h2 text-center"> <i class="text-danger">Hey {{user["name"]}}</i>, Please Fill In Your Role To proceed.</h2>
+        </div>
+        <div class="row justify-content-center">
+            <img class="col-md-3 col-6 img img-fluid" referrerpolicy="no-referrer" [src]="user['profilepic']" alt="">
+        </div>
+        <h4 class="text-center mt-3">Select Your Role</h4>
+        
+        
+        <div class="row justify-content-center">
+            <div class="d-flex col-md-4 col-sm-6 col-8 flex-row align-items-center mb-4">
+            <i class="fas fa-masks-theater fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+                
+                <select [formControl]="roleControl"  class="form-control shadow form-select-lg mb-3" name="role" aria-label=".form-select-lg example">
+                <option value="customer">Customer</option>
+                <option value="seller">Seller</option>
+                </select>
+            </div>
+            </div>
+ 
+            
+        </div>
+
+        <div class="row justify-content-center ">
+            
+                <button  (click)="submitForm()" class="btn col-sm-3 col-5  btn-outline-danger">Sign Up</button>
+ 
+         </div>
+
+    </div>
+  </ng-container>

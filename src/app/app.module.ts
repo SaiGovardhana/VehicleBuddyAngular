@@ -35,6 +35,7 @@ import { MyrevenueComponent } from './seller/myrevenue/myrevenue.component';
 import { RevenueSumPipe } from './seller/myrevenue/RevenueSum.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { CookieService } from 'ngx-cookie-service';
+import { GoogleAuthComponent } from './google-auth/google-auth.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CookieService } from 'ngx-cookie-service';
     MyrevenueComponent,
     RevenueSumPipe,
     ProfileComponent,
+    GoogleAuthComponent,
   
   
    

@@ -16,6 +16,7 @@ import { BookvehicleComponent } from './customer/bookvehicle/bookvehicle.compone
 import { MybookingsComponent } from './customer/mybookings/mybookings.component';
 import { MyrevenueComponent } from './seller/myrevenue/myrevenue.component';
 import { ProfileComponent } from './profile/profile.component';
+import { GoogleAuthComponent } from './google-auth/google-auth.component';
 const basicRoutes:Routes=[
   {path:"",pathMatch:"full",redirectTo:"home"},
   {path:"home",component:HomeComponent,pathMatch:"full",canActivate:[LoggedOutActivateGuard]},
@@ -29,7 +30,8 @@ const basicRoutes:Routes=[
   {path:'user/booknow',component:BookvehicleComponent,canActivate:[CustomerActivateGuard]},
   {path:'user/mybookings',component:MybookingsComponent,canActivate:[CustomerActivateGuard]},
   {path:'seller/myrevenue',component:MyrevenueComponent,canActivate:[SellerActivateGuard]},
-  {path:'profile',component:ProfileComponent}
+  {path:'profile',component:ProfileComponent,canActivate:[LoggedInActivateGuard]},
+  {path:'googleCallBack',component:GoogleAuthComponent,canActivate:[LoggedOutActivateGuard]}
 ]
 
 

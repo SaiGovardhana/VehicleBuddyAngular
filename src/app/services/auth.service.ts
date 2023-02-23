@@ -51,6 +51,23 @@ export class AuthStore
             
     }
 
+    addGoogleUser(data:BasicObject):Observable<BasicObject>
+    {
+        return this.http.post<BasicObject>('/api/google/addGoogleUser',data).pipe(catchError(
+            ()=>of({"success":false,"message":"An error occurred."})
+            )).pipe(tap(
+                res=>{if(res["success"])
+                {
+                    console.log("Added user to local storage");
+                    localStorage.setItem("userDetails",JSON.stringify(data));
+                    data=data as userModel;
+                    this.subject$.next(data);
+                }
+                }
+            ));
+            
+    }
+
     login(data:BasicObject):Observable<BasicObject>
     {
         return this.http.post<BasicObject>('/api/user/auth/login',data).pipe(catchError(
@@ -87,6 +104,24 @@ export class AuthStore
             )).subscribe(e=>{});
     }
     
+
+    getAuthData(code:string):Observable<BasicObject>
+    {  
+        return this.http.get(`/api/google/callback?code=${code}`).pipe(tap(
+            res=>{res = res as BasicObject
+                if(res["success"])
+                {   if(res["presentUser"])
+                    {
+                    console.log("Added user to local storage");
+                    let data=res["data"] as userModel;
+                    localStorage.setItem("userDetails",JSON.stringify(data ));
+                    this.subject$.next(data);
+                    }
+                
+                }
+            
+            }));
+    }
     signOut()
     {   console.log("Signing Out");
         let defaultRole:userModel={name:"",email:"",role:"default"};
